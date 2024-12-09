@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
@@ -55,4 +55,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: main
         publish_dir: playwright-report/
