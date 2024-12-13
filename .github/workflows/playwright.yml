@@ -5,13 +5,14 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '00 08 * * *'
+    - cron: '0 0 * * *'
 permissions:
   contents: write
   pages: write
   id-token: write
 jobs:
   test:
+    if: always()
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
