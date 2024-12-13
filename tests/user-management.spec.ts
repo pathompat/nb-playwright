@@ -37,7 +37,7 @@ test('should see user menu in nav bar and header', async ({ page }) => {
 test('use search non-user in filter input should see no-data', async ({ page }) => {
   const filterBox = await page.getByPlaceholder('username,ร้านค้า')
   await expect(filterBox).toBeVisible();
-  await filterBox.fill('userinanothersystem331');
+  await filterBox.fill('jobnattapong');
   await expect(page.locator('td')).toContainText('No data available');
 });
 
