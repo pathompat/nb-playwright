@@ -10,6 +10,7 @@ const randomLowercaseString = (length = 6) =>  {
 }
 
 const randomStr = randomLowercaseString(6)
+const RANDOM_USER = 'userinanothersystem331'
 const NEW_USER = 'playwright' + randomStr
 const NEW_STORE = 'store ' + randomStr
 const USER_TOO_SHORT = 'abcde'
@@ -29,17 +30,19 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/user');
 });
 
-test('should see user menu in nav bar and header', async ({ page }) => {
-  await expect(page.getByRole('listbox')).toMatchAriaSnapshot(`- link "จัดการ User"`);
-  await expect(page.getByRole('heading', { name: 'จัดการ User' })).toBeVisible();
-});
+test.describe('Common UI & Views', () => {
+  test('should see user menu in nav bar and header', async ({ page }) => {
+    await expect(page.getByRole('listbox')).toMatchAriaSnapshot(`- link "จัดการ User"`);
+    await expect(page.getByRole('heading', { name: 'จัดการ User' })).toBeVisible();
+  });
 
-test('use search non-user in filter input should see no-data', async ({ page }) => {
-  const filterBox = await page.getByPlaceholder('username,ร้านค้า')
-  await expect(filterBox).toBeVisible();
-  await filterBox.fill('jobnattapong');
-  await expect(page.locator('td')).toContainText('No data available');
-});
+  test('use search non-user in filter input should see no-data', async ({ page }) => {
+    const filterBox = await page.getByPlaceholder('username,ร้านค้า')
+    await expect(filterBox).toBeVisible();
+    await filterBox.fill(RANDOM_USER);
+    await expect(page.locator('td')).toContainText('No data available');
+  });
+})
 
 test.describe('Create User', () => {
   test.beforeEach(async ({ page }) => {

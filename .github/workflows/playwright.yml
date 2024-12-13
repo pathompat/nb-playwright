@@ -38,6 +38,7 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    if: ${{ always() }}
 
     outputs:
         timestamp: ${{ steps.timestampid.outputs.timestamp }}
