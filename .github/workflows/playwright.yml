@@ -28,7 +28,9 @@ jobs:
       env:
         ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
         ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-      run: ADMIN_USERNAME=$ADMIN_USERNAME ADMIN_PASSWORD=$ADMIN_PASSWORD npx playwright test
+        CUSTOMER_USERNAME: ${{ secrets.CUSTOMER_USERNAME }}
+        CUSTOMER_PASSWORD: ${{ secrets.CUSTOMER_PASSWORD }}
+      run: ADMIN_USERNAME=$ADMIN_USERNAME ADMIN_PASSWORD=$ADMIN_PASSWORD CUSTOMER_USERNAME=$CUSTOMER_USERNAME CUSTOMER_PASSWORD=$CUSTOMER_PASSWORD npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ always() }}
       with:
