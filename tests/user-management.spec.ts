@@ -46,7 +46,7 @@ test.describe('Common UI & Views', () => {
 
 test.describe('Create User', () => {
   test.beforeEach(async ({ page }) => {
-    await page.waitForResponse("/api/user/");
+    await page.waitForResponse("/api/user");
     await page.getByRole('button', { name: /เพิ่มผู้ใช้งาน/i }).click()
   });
 
@@ -67,14 +67,14 @@ test.describe('Create User', () => {
   test('should display error and disable button when fill username with uppercase', async ({ page }) => {
     await page.getByLabel('Username').click();
     await page.getByLabel('Username').fill(USER_ONLY_UPPERCASE);
-    await expect(page.getByText('บัญชีผู้ใช้งานต้องเป็นตัวอักษรภาษาอังกฤษพิมพ์เล็กเท่านั้น')).toBeVisible();
+    await expect(page.getByText('บัญชีผู้ใช้งานต้องเป็นตัวอักษรภาษาอังกฤษพิมพ์เล็กหรือตัวเลขเท่านั้น')).toBeVisible();
     await expect(page.getByRole('button', { name: 'บันทึก' })).toBeDisabled()
   });
 
   test('should display error and disable button when fill username with non-english character', async ({ page }) => {
     await page.getByLabel('Username').click();
     await page.getByLabel('Username').fill(USER_NO_EN_CHAR);
-    await expect(page.getByText('บัญชีผู้ใช้งานต้องเป็นตัวอักษรภาษาอังกฤษเท่านั้น')).toBeVisible();
+    await expect(page.getByText('บัญชีผู้ใช้งานต้องเป็นตัวอักษรภาษาอังกฤษพิมพ์เล็กหรือตัวเลขเท่านั้น')).toBeVisible();
     await expect(page.getByRole('button', { name: 'บันทึก' })).toBeDisabled()
   });
 

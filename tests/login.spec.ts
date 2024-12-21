@@ -18,7 +18,7 @@ test.describe('Validation', () => {
   test('should display error when fill username with uppercase', async ({ page }) => {
     await page.getByPlaceholder('กรุณากรอกบัญชีผู้ใช้งาน').click();
     await page.getByPlaceholder('กรุณากรอกบัญชีผู้ใช้งาน').fill('ABCDEF');
-    await expect(page.locator('#username-messages')).toContainText('บัญชีผู้ใช้งานต้องเป็นตัวอักษรภาษาอังกฤษพิมพ์เล็กเท่านั้น');
+    await expect(page.locator('#username-messages')).toContainText('บัญชีผู้ใช้งานต้องเป็นตัวอักษรภาษาอังกฤษพิมพ์เล็กหรือตัวเลขเท่านั้น');
     const loginBtn = page.getByRole('button', { name: 'เข้าสู่ระบบ' })
     await expect(loginBtn).toBeDisabled()
   });
@@ -26,7 +26,7 @@ test.describe('Validation', () => {
   test('should display error when fill username with non-english character', async ({ page }) => {
     await page.getByPlaceholder('กรุณากรอกบัญชีผู้ใช้งาน').click();
     await page.getByPlaceholder('กรุณากรอกบัญชีผู้ใช้งาน').fill('หหกดหหฟกฟหหห');
-    await expect(page.locator('#username-messages')).toContainText('บัญชีผู้ใช้งานต้องเป็นตัวอักษรภาษาอังกฤษเท่านั้น');
+    await expect(page.locator('#username-messages')).toContainText('บัญชีผู้ใช้งานต้องเป็นตัวอักษรภาษาอังกฤษพิมพ์เล็กหรือตัวเลขเท่านั้น');
     const loginBtn = page.getByRole('button', { name: 'เข้าสู่ระบบ' })
     await expect(loginBtn).toBeDisabled()
   });

@@ -11,7 +11,7 @@ test('should see title', async ({ page }) => {
 
 test('should able to see number of production statistic', async ({ page }) => {
   await expect(page.locator('p').filter({ hasText: 'รออนุมัติ' })).toBeVisible();
-  await expect(page.locator('p').filter({ hasText: 'ออกเเบบ' })).toBeVisible();
+  await expect(page.locator('p').filter({ hasText: 'ออกแบบ' })).toBeVisible();
   await expect(page.locator('p').filter({ hasText: 'พิมพ์' })).toBeVisible();
   await expect(page.locator('p').filter({ hasText: 'เย็บเข้าเล่ม' })).toBeVisible();
   await expect(page.locator('p').filter({ hasText: 'แพ็ค' })).toBeVisible();
