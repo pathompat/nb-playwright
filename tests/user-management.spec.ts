@@ -1,18 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { randomAlphanumericLowerCase } from '../helpers/random';
 
-const randomLowercaseString = (length = 6) =>  {
-  const chars = 'abcdefghijklmnopqrstuvwxyz';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
-}
-
-const randomStr = randomLowercaseString(6)
+const randomStr = randomAlphanumericLowerCase(6)
 const RANDOM_USER = 'userinanothersystem331'
 const NEW_USER = 'playwright' + randomStr
-const NEW_STORE = 'store ' + randomStr
+const NEW_STORE = 'playwright store ' + randomStr
 const USER_TOO_SHORT = 'abcde'
 const USER_ONLY_UPPERCASE = 'ABCDEF'
 const USER_NO_EN_CHAR = 'หหกดหหฟกฟหหห'
